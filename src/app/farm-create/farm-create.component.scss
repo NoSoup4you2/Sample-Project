@@ -1,0 +1,41 @@
+.form{
+    padding: 2rem;
+}
+
+.space-left{
+    margin: 10px;
+}
+
+.fa-w-14{
+    width: 0.875em;
+    line-height: 2.5;
+}
+
+.input{
+    margin-left: 20px;
+    background-color: #eee;
+    border-color: black;
+   
+}
+.icon-space{
+    margin-left: 1rem;
+}
+
+.disabled-button{
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.remove-spinner {
+    /* Chrome, Safari, Edge, Opera */
+    input[matinput]::-webkit-outer-spin-button,
+    input[matinput]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+     margin: 0;
+    }
+   
+    /* Firefox */
+    input[matinput][type=number] {
+     -moz-appearance: textfield;
+    }
+   }

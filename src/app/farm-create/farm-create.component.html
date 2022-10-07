@@ -1,0 +1,149 @@
+
+
+
+<div [formGroup]="farmForm" class="form">
+
+  <div class="row">
+
+          <mat-form-field class="col-md-12">
+                  <input
+                      matInput
+                      placeholder="Farm Name"
+                      formControlName ="name"
+                  >
+          </mat-form-field>
+
+         </div>
+         <div class="row">
+
+          <mat-form-field class="col-md-12">
+                  <input
+                      matInput
+                      placeholder="Farm Nickname"
+                      formControlName ="nickname"
+                  >
+          </mat-form-field>
+
+         </div>
+
+         <div class="row">
+
+          <mat-form-field class="col-md-6">
+                  <input
+                      matInput
+                      placeholder="City"
+                      formControlName ="city"
+                  >
+          </mat-form-field>
+
+          <mat-form-field class="col-md-6">
+            <input
+                matInput
+                placeholder="Carrier Route"
+                formControlName ="carrier_route"
+            >
+    </mat-form-field>
+
+         </div>
+
+         <div class="row">
+
+          <mat-form-field class="col-md-4">
+            <input
+                matInput
+                placeholder="Property Count"
+                formControlName ="property_count"
+            >
+    </mat-form-field>
+
+          <mat-form-field class="col-md-4">
+                  <input
+                      matInput
+                      placeholder="Owner Occupied"
+                      formControlName ="owner_occupied"
+                  >
+          </mat-form-field>
+
+          <mat-form-field class="col-md-4">
+            <input
+                matInput
+                placeholder="Absent Occupied"
+                formControlName ="absent_occupied"
+            >
+    </mat-form-field>
+
+         </div>
+
+         <div class="row">
+            <div class="col-md-12">
+
+            <mat-tab-group animationDuration="0ms">
+                <mat-tab label="Tracts & Exclusions">
+
+
+          <mat-card class="col-md-5 space">Tract List 
+            <div class="row remove-spinner">
+                
+                <input class="col-md-6 input" type="number"  #newTractId  matInput placeholder="Enter Tract Number">
+                <div [ngClass]="tractId.selectedOptions.selected.length > 0 ? 'remove-question-button icon-space' : 'remove-question-button icon-space disabled-button'" (click)="remove(tractId.selectedOptions.selected)">
+                    <div class="fa fa-trash fa-lg" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg="">
+                    </div>
+                </div>
+
+                
+                <div [ngClass]="newTractId.value.length > 0 ? 'remove-question-button icon-space' : 'remove-question-button icon-space disabled-button'"(click)="addItemToTracts(newTractId.value)">
+                    <div class="fa fa-plus fa-lg"  viewBox="0 0 448 512">
+                    </div>
+                </div>
+           
+            </div>
+       
+        
+            <mat-selection-list  #tractId [multiple]="true">
+                <mat-list-option *ngFor="let id of tract_id" [value]="id">
+                  {{id}}
+                </mat-list-option>
+              </mat-selection-list>
+          <!-- <mat-selection-list class="col-md-12" #shoes formControlName ="tract_id" multiple="false">
+            <mat-list-option *ngFor="let shoe of tract_id" [value]="shoe" >
+              {{shoe}}
+            </mat-list-option>
+          </mat-selection-list> -->
+          </mat-card>
+
+          <mat-card class="col-md-5 space">Excluded property's
+            <mat-selection-list class="col-md-12" #shoes2>
+              <mat-list-option *ngFor="let shoe of tract_id">
+                {{shoe}}
+              </mat-list-option>
+            </mat-selection-list>
+            </mat-card>
+        </mat-tab>
+        <mat-tab label="History">Content 2</mat-tab>
+       
+      </mat-tab-group>
+    </div>
+        
+      </div>
+
+      Option selected: {{tractId.selectedOptions.selected.length}} {{newTractId.value.length}}
+
+      <div *ngFor="let hero of tractId.selectedOptions.selected; let i = index">
+        {{i}}
+      </div>
+
+      <div >
+
+
+    
+      <div class="row">
+          <div class="col-md-12">
+         
+              <div mat-dialog-actions align="end">
+                
+                      <button  (click)="close()"  [disabled]="!farmForm.valid || farmForm.pristine" mat-raised-button color="primary">{{submitText}}</button>
+                      <button  (click)="print(tractId.selectedOptions.selected )" mat-raised-button color="warn">Exit</button>
+              </div>
+          </div>
+      </div>
+</div>
